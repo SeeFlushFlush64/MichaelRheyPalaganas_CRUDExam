@@ -1,5 +1,6 @@
 ﻿using MichaelRheyPalaganas_CRUDExam.Data;
 using MichaelRheyPalaganas_CRUDExam.Models.Entities;
+using MichaelRheyPalaganas_CRUDExam.SubForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -104,6 +105,50 @@ namespace MichaelRheyPalaganas_CRUDExam.RequiredForms
             }
 
             UpdateButtons();
+        }
+
+        public void ShowAddAlbums(object Form)
+        {
+            if (_parentForm.panelBody.Controls.Count > 0)
+            {
+                _parentForm.panelBody.Controls.RemoveAt(0);
+            }
+            AddAlbum addAlbumForm = new AddAlbum(_parentForm, _context); // Pass this dashboard
+            addAlbumForm.TopLevel = false;
+            addAlbumForm.Dock = DockStyle.Fill;
+            _parentForm.panelBody.Controls.Add(addAlbumForm);
+            _parentForm.panelBody.Tag = addAlbumForm;
+
+            addAlbumForm.Show();
+        }
+
+        private void UpdateButtons()
+        {
+            picBoxRALeft.Visible = (_currentIndex > 0);
+            picBoxRARight.Visible = (_currentIndex + _visibleAlbums < _albumPanels.Count);
+        }
+
+        private void Album_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void Album_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+
+        private void Album_Click(object sender, EventArgs e)
+        {
+            // Get the clicked control
+            Control clickedControl = (Control)sender;
+
+            // Retrieve the Album object from the Tag property
+            if (clickedControl.Tag is Album selectedAlbum)
+            {
+                _parentForm.ShowAddAlbums(new ShowAlbumTracks(_context, selectedAlbum, _parentForm));
+            }
         }
     }
 }

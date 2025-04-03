@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MichaelRheyPalaganas_CRUDExam")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37d11f667a0ed9579796ad486916c812724ed56d")]
 [assembly: System.Reflection.AssemblyProductAttribute("MichaelRheyPalaganas_CRUDExam")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MichaelRheyPalaganas_CRUDExam")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

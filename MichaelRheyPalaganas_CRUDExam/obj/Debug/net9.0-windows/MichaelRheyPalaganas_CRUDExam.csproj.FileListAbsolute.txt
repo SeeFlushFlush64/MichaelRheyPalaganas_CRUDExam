@@ -149,3 +149,4 @@ C:\Users\micha\source\repos\MichaelRheyPalaganas_CRUDExam\MichaelRheyPalaganas_C
 C:\Users\micha\source\repos\MichaelRheyPalaganas_CRUDExam\MichaelRheyPalaganas_CRUDExam\obj\Debug\net9.0-windows\MichaelRheyPalaganas_CRUDExam.pdb
 C:\Users\micha\source\repos\MichaelRheyPalaganas_CRUDExam\MichaelRheyPalaganas_CRUDExam\obj\Debug\net9.0-windows\MichaelRheyPalaganas_CRUDExam.genruntimeconfig.cache
 C:\Users\micha\source\repos\MichaelRheyPalaganas_CRUDExam\MichaelRheyPalaganas_CRUDExam\obj\Debug\net9.0-windows\ref\MichaelRheyPalaganas_CRUDExam.dll
+C:\Users\micha\source\repos\MichaelRheyPalaganas_CRUDExam\MichaelRheyPalaganas_CRUDExam\obj\Debug\net9.0-windows\MichaelRheyPalaganas_CRUDExam.sourcelink.json

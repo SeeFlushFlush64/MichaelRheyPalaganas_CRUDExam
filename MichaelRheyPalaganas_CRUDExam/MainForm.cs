@@ -58,6 +58,20 @@ namespace MichaelRheyPalaganas_CRUDExam
             LoadForms(form);
         }
 
+        public void ShowAddAlbums(Form form)
+        {
+            if (panelBody.Controls.Count > 0)
+            {
+                panelBody.Controls.RemoveAt(0);
+            }
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            panelBody.Controls.Add(form);
+            panelBody.Tag = form;
+            form.Show();
+        }
+
+
         private void picBoxBackButton_MouseHover(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;

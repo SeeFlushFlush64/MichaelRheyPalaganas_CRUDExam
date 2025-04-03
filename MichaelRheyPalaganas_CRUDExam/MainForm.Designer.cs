@@ -178,7 +178,7 @@
         private Panel panelTopBar;
         private Panel panelSideBar;
         private Panel panelBottomBar;
-        private Panel panelBody;
+        public Panel panelBody;
         private TextBox txtBoxSearchBar;
         private PictureBox picBoxHome;
         private PictureBox picBoxSearch;
