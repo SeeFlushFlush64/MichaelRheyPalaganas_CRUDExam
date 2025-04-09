@@ -38,6 +38,9 @@
             picBoxAddAlbum = new PictureBox();
             panelBody = new Panel();
             panelBottomBar = new Panel();
+            lblTrackDuration = new Label();
+            lblTrackTimer = new Label();
+            picBoxSeekBar = new PictureBox();
             lblPlayingArtist = new Label();
             lblPlayingTrackName = new Label();
             picBoxPlayingAlbumPic = new PictureBox();
@@ -45,10 +48,10 @@
             picBoxNextTrack = new PictureBox();
             picBoxPreviousTrack = new PictureBox();
             picBoxShuffleTracks = new PictureBox();
-            picBoxPlayTrack = new PictureBox();
             picBoxVolume = new PictureBox();
             picBoxNoVolume = new PictureBox();
             picBoxPauseTrack = new PictureBox();
+            picBoxPlayTrack = new PictureBox();
             panelTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxHome).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxForwardButton).BeginInit();
@@ -57,15 +60,16 @@
             panelSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxAddAlbum).BeginInit();
             panelBottomBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxSeekBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayingAlbumPic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxRepeatTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNextTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPreviousTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxVolume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNoVolume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).BeginInit();
             SuspendLayout();
             // 
             // panelTopBar
@@ -84,19 +88,21 @@
             // picBoxHome
             // 
             picBoxHome.Image = Properties.Resources.home_icon;
-            picBoxHome.Location = new Point(136, 12);
+            picBoxHome.Location = new Point(124, 12);
             picBoxHome.Name = "picBoxHome";
-            picBoxHome.Size = new Size(47, 50);
+            picBoxHome.Size = new Size(36, 41);
             picBoxHome.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxHome.TabIndex = 3;
             picBoxHome.TabStop = false;
+            picBoxHome.MouseLeave += picBoxHome_MouseLeave;
+            picBoxHome.MouseHover += picBoxHome_MouseHover;
             // 
             // picBoxForwardButton
             // 
             picBoxForwardButton.Image = Properties.Resources.right_icon;
             picBoxForwardButton.Location = new Point(70, 12);
             picBoxForwardButton.Name = "picBoxForwardButton";
-            picBoxForwardButton.Size = new Size(47, 50);
+            picBoxForwardButton.Size = new Size(36, 41);
             picBoxForwardButton.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxForwardButton.TabIndex = 3;
             picBoxForwardButton.TabStop = false;
@@ -107,9 +113,9 @@
             // picBoxBackButton
             // 
             picBoxBackButton.Image = Properties.Resources.left_icon;
-            picBoxBackButton.Location = new Point(10, 12);
+            picBoxBackButton.Location = new Point(17, 12);
             picBoxBackButton.Name = "picBoxBackButton";
-            picBoxBackButton.Size = new Size(47, 50);
+            picBoxBackButton.Size = new Size(36, 41);
             picBoxBackButton.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxBackButton.TabIndex = 1;
             picBoxBackButton.TabStop = false;
@@ -120,17 +126,19 @@
             // picBoxSearch
             // 
             picBoxSearch.Image = Properties.Resources.search_icon;
-            picBoxSearch.Location = new Point(558, 28);
+            picBoxSearch.Location = new Point(560, 18);
             picBoxSearch.Name = "picBoxSearch";
             picBoxSearch.Size = new Size(38, 35);
             picBoxSearch.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxSearch.TabIndex = 4;
             picBoxSearch.TabStop = false;
+            picBoxSearch.MouseLeave += picBoxSearch_MouseLeave;
+            picBoxSearch.MouseHover += picBoxSearch_MouseHover;
             // 
             // txtBoxSearchBar
             // 
             txtBoxSearchBar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxSearchBar.Location = new Point(230, 28);
+            txtBoxSearchBar.Location = new Point(232, 18);
             txtBoxSearchBar.Name = "txtBoxSearchBar";
             txtBoxSearchBar.PlaceholderText = "  What do you want to play?";
             txtBoxSearchBar.Size = new Size(322, 35);
@@ -140,9 +148,9 @@
             // 
             panelSideBar.BackColor = SystemColors.ScrollBar;
             panelSideBar.Controls.Add(picBoxAddAlbum);
-            panelSideBar.Location = new Point(-2, 69);
+            panelSideBar.Location = new Point(-2, 59);
             panelSideBar.Name = "panelSideBar";
-            panelSideBar.Size = new Size(71, 472);
+            panelSideBar.Size = new Size(71, 482);
             panelSideBar.TabIndex = 1;
             // 
             // picBoxAddAlbum
@@ -155,6 +163,8 @@
             picBoxAddAlbum.TabIndex = 4;
             picBoxAddAlbum.TabStop = false;
             picBoxAddAlbum.Click += picBoxAddAlbum_Click;
+            picBoxAddAlbum.MouseLeave += picBoxAddAlbum_MouseLeave;
+            picBoxAddAlbum.MouseHover += picBoxAddAlbum_MouseHover;
             // 
             // panelBody
             // 
@@ -166,6 +176,9 @@
             // panelBottomBar
             // 
             panelBottomBar.BackColor = SystemColors.WindowFrame;
+            panelBottomBar.Controls.Add(lblTrackDuration);
+            panelBottomBar.Controls.Add(lblTrackTimer);
+            panelBottomBar.Controls.Add(picBoxSeekBar);
             panelBottomBar.Controls.Add(lblPlayingArtist);
             panelBottomBar.Controls.Add(lblPlayingTrackName);
             panelBottomBar.Controls.Add(picBoxPlayingAlbumPic);
@@ -173,14 +186,48 @@
             panelBottomBar.Controls.Add(picBoxNextTrack);
             panelBottomBar.Controls.Add(picBoxPreviousTrack);
             panelBottomBar.Controls.Add(picBoxShuffleTracks);
-            panelBottomBar.Controls.Add(picBoxPlayTrack);
             panelBottomBar.Controls.Add(picBoxVolume);
             panelBottomBar.Controls.Add(picBoxNoVolume);
+            panelBottomBar.Controls.Add(picBoxPlayTrack);
             panelBottomBar.Controls.Add(picBoxPauseTrack);
             panelBottomBar.Location = new Point(-5, 541);
             panelBottomBar.Name = "panelBottomBar";
-            panelBottomBar.Size = new Size(902, 113);
+            panelBottomBar.Size = new Size(902, 132);
             panelBottomBar.TabIndex = 2;
+            // 
+            // lblTrackDuration
+            // 
+            lblTrackDuration.AutoSize = true;
+            lblTrackDuration.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTrackDuration.Location = new Point(645, 82);
+            lblTrackDuration.Name = "lblTrackDuration";
+            lblTrackDuration.Size = new Size(51, 30);
+            lblTrackDuration.TabIndex = 12;
+            lblTrackDuration.Text = "0:00";
+            // 
+            // lblTrackTimer
+            // 
+            lblTrackTimer.AutoSize = true;
+            lblTrackTimer.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTrackTimer.Location = new Point(220, 82);
+            lblTrackTimer.Name = "lblTrackTimer";
+            lblTrackTimer.Size = new Size(51, 30);
+            lblTrackTimer.TabIndex = 11;
+            lblTrackTimer.Text = "0:00";
+            // 
+            // picBoxSeekBar
+            // 
+            picBoxSeekBar.Location = new Point(286, 82);
+            picBoxSeekBar.Name = "picBoxSeekBar";
+            picBoxSeekBar.Size = new Size(344, 33);
+            picBoxSeekBar.TabIndex = 10;
+            picBoxSeekBar.TabStop = false;
+            picBoxSeekBar.Paint += picBoxSeekBar_Paint;
+            picBoxSeekBar.MouseDown += picBoxSeekBar_MouseDown;
+            picBoxSeekBar.MouseLeave += picBoxSeekBar_MouseLeave;
+            picBoxSeekBar.MouseHover += picBoxSeekBar_MouseHover;
+            picBoxSeekBar.MouseMove += picBoxSeekBar_MouseMove;
+            picBoxSeekBar.MouseUp += picBoxSeekBar_MouseUp;
             // 
             // lblPlayingArtist
             // 
@@ -266,22 +313,10 @@
             picBoxShuffleTracks.MouseLeave += picBoxShuffleTracks_MouseLeave;
             picBoxShuffleTracks.MouseHover += picBoxShuffleTracks_MouseHover;
             // 
-            // picBoxPlayTrack
-            // 
-            picBoxPlayTrack.Image = Properties.Resources.play_icon;
-            picBoxPlayTrack.Location = new Point(432, 16);
-            picBoxPlayTrack.Name = "picBoxPlayTrack";
-            picBoxPlayTrack.Size = new Size(56, 60);
-            picBoxPlayTrack.SizeMode = PictureBoxSizeMode.StretchImage;
-            picBoxPlayTrack.TabIndex = 3;
-            picBoxPlayTrack.TabStop = false;
-            picBoxPlayTrack.MouseLeave += picBoxPlayTrack_MouseLeave;
-            picBoxPlayTrack.MouseHover += picBoxPlayTrack_MouseHover;
-            // 
             // picBoxVolume
             // 
             picBoxVolume.Image = Properties.Resources.volume_icon;
-            picBoxVolume.Location = new Point(670, 28);
+            picBoxVolume.Location = new Point(694, 28);
             picBoxVolume.Name = "picBoxVolume";
             picBoxVolume.Size = new Size(38, 38);
             picBoxVolume.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -293,7 +328,7 @@
             // picBoxNoVolume
             // 
             picBoxNoVolume.Image = Properties.Resources.no_volume_icon;
-            picBoxNoVolume.Location = new Point(670, 28);
+            picBoxNoVolume.Location = new Point(694, 28);
             picBoxNoVolume.Name = "picBoxNoVolume";
             picBoxNoVolume.Size = new Size(38, 38);
             picBoxNoVolume.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -311,18 +346,32 @@
             picBoxPauseTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPauseTrack.TabIndex = 4;
             picBoxPauseTrack.TabStop = false;
+            picBoxPauseTrack.Click += picBoxPauseTrack_Click;
             picBoxPauseTrack.MouseLeave += picBoxPauseTrack_MouseLeave;
             picBoxPauseTrack.MouseHover += picBoxPauseTrack_MouseHover;
+            // 
+            // picBoxPlayTrack
+            // 
+            picBoxPlayTrack.Image = Properties.Resources.play_icon;
+            picBoxPlayTrack.Location = new Point(432, 16);
+            picBoxPlayTrack.Name = "picBoxPlayTrack";
+            picBoxPlayTrack.Size = new Size(56, 60);
+            picBoxPlayTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxPlayTrack.TabIndex = 3;
+            picBoxPlayTrack.TabStop = false;
+            picBoxPlayTrack.Click += picBoxPlayTrack_Click;
+            picBoxPlayTrack.MouseLeave += picBoxPlayTrack_MouseLeave;
+            picBoxPlayTrack.MouseHover += picBoxPlayTrack_MouseHover;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 655);
+            ClientSize = new Size(896, 670);
             Controls.Add(panelBody);
             Controls.Add(panelBottomBar);
-            Controls.Add(panelSideBar);
             Controls.Add(panelTopBar);
+            Controls.Add(panelSideBar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainForm";
             Text = "Music Player";
@@ -336,15 +385,16 @@
             ((System.ComponentModel.ISupportInitialize)picBoxAddAlbum).EndInit();
             panelBottomBar.ResumeLayout(false);
             panelBottomBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxSeekBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayingAlbumPic).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxRepeatTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNextTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPreviousTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxVolume).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNoVolume).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).EndInit();
             ResumeLayout(false);
         }
 
@@ -371,5 +421,8 @@
         public Label lblPlayingTrackName;
         private PictureBox picBoxVolume;
         private PictureBox picBoxNoVolume;
+        private PictureBox picBoxSeekBar;
+        private Label lblTrackDuration;
+        private Label lblTrackTimer;
     }
 }

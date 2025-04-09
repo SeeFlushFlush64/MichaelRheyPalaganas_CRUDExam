@@ -290,12 +290,26 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             var track = _album.Tracks.FirstOrDefault(t => t.TrackId == trackId);
             clickedPic.SendToBack();
 
-            // Same track & it's paused -> just resume
-            if (AudioManager.IsPlaying && AudioManager.currentlyPlayingTrackId == trackId)
+            //// Same track & it's paused -> just resume
+            //if (AudioManager.IsPlaying && AudioManager.currentlyPlayingTrackId == trackId)
+            //{
+            //    AudioManager.Resume();  // Just resume
+            //    return;
+            //}
+
+
+            picBoxPlayTracks.SendToBack();
+            _parentForm.picBoxPlayTrack.SendToBack();
+            _parentForm.timer.Start();
+            if (AudioManager.outputDevice != null && AudioManager.audioFile != null)
             {
-                AudioManager.Resume();  // Just resume
+                AudioManager.Resume();
                 return;
             }
+            //var firstTrack = _album.Tracks.OrderBy(t => t.TrackId).FirstOrDefault();
+
+            //DisplayCurrentPlayingTrackDetails(firstTrack);
+            //AudioManager.PlayMp3(firstTrack.FilePath); // Play the first track
 
             // Stop the current track (if any)
             AudioManager.Stop();
@@ -315,7 +329,8 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
         {
             AudioManager.parentForm = _parentForm;
             AudioManager.album = _album; 
-       
+            AudioManager.outputDevice = _outputDevice;
+            AudioManager.audioFile = _audioFile;
             AudioManager.currentlyPlayingTrackId = track.TrackId;
             AudioManager.DisplayCurrentPlayingTrackDetails(track);
             _currentlyPlayingTrackId = track.TrackId;
@@ -330,6 +345,7 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             clickedPic.SendToBack();
             picBoxPauseTracks.SendToBack();
             _parentForm.picBoxPauseTrack.SendToBack();
+            _parentForm.timer.Stop();
             AudioManager.Pause();  // Use AudioManager to pause the track
         }
 
@@ -353,6 +369,7 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             // Set up and play the new track
             //_parentForm.currentPlayingTrackId = _currentlyPlayingTrackId;
             _parentForm.album = _album;
+            _parentForm.timer.Start();
             _outputDevice = new WaveOutEvent();
             _audioFile = new AudioFileReader(filePath);
             _outputDevice.Init(_audioFile);
@@ -391,8 +408,15 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
         private void picBoxPlayTracks_Click(object sender, EventArgs e)
         {
             picBoxPlayTracks.SendToBack();
+            _parentForm.picBoxPlayTrack.SendToBack();
+            _parentForm.timer.Start();
+            if (AudioManager.outputDevice != null && AudioManager.audioFile != null)
+            {
+                AudioManager.Resume();
+                return;
+            }
             var firstTrack = _album.Tracks.OrderBy(t => t.TrackId).FirstOrDefault();
-
+            
             DisplayCurrentPlayingTrackDetails(firstTrack);
             AudioManager.PlayMp3(firstTrack.FilePath); // Play the first track
         }
@@ -400,6 +424,7 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
         private void picBoxPauseTracks_Click(object sender, EventArgs e)
         {
             picBoxPauseTracks.SendToBack();
+            _parentForm.timer.Stop();
             _parentForm.picBoxPauseTrack.SendToBack();
             AudioManager.Pause();
         }

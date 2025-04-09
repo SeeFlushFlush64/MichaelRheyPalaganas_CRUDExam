@@ -10,8 +10,8 @@ namespace MichaelRheyPalaganas_CRUDExam
 {
     public static class AudioManager
     {
-        private static WaveOutEvent _outputDevice;
-        private static AudioFileReader _audioFile;
+        public static WaveOutEvent outputDevice;
+        public static AudioFileReader audioFile;
         public static int currentlyPlayingTrackId;
         public static MainForm parentForm;
         public static Album album;
@@ -30,10 +30,10 @@ namespace MichaelRheyPalaganas_CRUDExam
             Stop();
 
             // Initialize and play the new track
-            _outputDevice = new WaveOutEvent();
-            _audioFile = new AudioFileReader(filePath);
-            _outputDevice.Init(_audioFile);
-            _outputDevice.Play();
+            outputDevice = new WaveOutEvent();
+            audioFile = new AudioFileReader(filePath);
+            outputDevice.Init(audioFile);
+            outputDevice.Play();
 
             _isPlaying = true;
         }
@@ -41,9 +41,9 @@ namespace MichaelRheyPalaganas_CRUDExam
         // Method to pause the track
         public static void Pause()
         {
-            if (_outputDevice != null && _outputDevice.PlaybackState == PlaybackState.Playing)
+            if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
             {
-                _outputDevice.Pause();
+                outputDevice.Pause();
                 _isPlaying = false;
             }
         }
@@ -51,9 +51,9 @@ namespace MichaelRheyPalaganas_CRUDExam
         // Method to resume playback
         public static void Resume()
         {
-            if (_outputDevice != null && _outputDevice.PlaybackState == PlaybackState.Paused)
+            if (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Paused)
             {
-                _outputDevice.Play();
+                outputDevice.Play();
                 _isPlaying = true;
             }
         }
@@ -61,13 +61,13 @@ namespace MichaelRheyPalaganas_CRUDExam
         // Method to stop the track
         public static void Stop()
         {
-            if (_outputDevice != null)
+            if (outputDevice != null)
             {
-                _outputDevice.Stop();
-                _outputDevice.Dispose();
-                _outputDevice = null;
-                _audioFile?.Dispose();
-                _audioFile = null;
+                outputDevice.Stop();
+                outputDevice.Dispose();
+                outputDevice = null;
+                audioFile?.Dispose();
+                audioFile = null;
                 _isPlaying = false;
             }
         }
