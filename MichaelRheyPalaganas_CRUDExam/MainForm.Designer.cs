@@ -50,8 +50,8 @@
             picBoxShuffleTracks = new PictureBox();
             picBoxVolume = new PictureBox();
             picBoxNoVolume = new PictureBox();
-            picBoxPauseTrack = new PictureBox();
             picBoxPlayTrack = new PictureBox();
+            picBoxPauseTrack = new PictureBox();
             panelTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxHome).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxForwardButton).BeginInit();
@@ -68,8 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxVolume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNoVolume).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).BeginInit();
             SuspendLayout();
             // 
             // panelTopBar
@@ -192,34 +192,34 @@
             panelBottomBar.Controls.Add(picBoxPauseTrack);
             panelBottomBar.Location = new Point(-5, 541);
             panelBottomBar.Name = "panelBottomBar";
-            panelBottomBar.Size = new Size(902, 132);
+            panelBottomBar.Size = new Size(902, 125);
             panelBottomBar.TabIndex = 2;
             // 
             // lblTrackDuration
             // 
             lblTrackDuration.AutoSize = true;
-            lblTrackDuration.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTrackDuration.Location = new Point(645, 82);
+            lblTrackDuration.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTrackDuration.Location = new Point(645, 77);
             lblTrackDuration.Name = "lblTrackDuration";
-            lblTrackDuration.Size = new Size(51, 30);
+            lblTrackDuration.Size = new Size(40, 21);
             lblTrackDuration.TabIndex = 12;
             lblTrackDuration.Text = "0:00";
             // 
             // lblTrackTimer
             // 
             lblTrackTimer.AutoSize = true;
-            lblTrackTimer.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTrackTimer.Location = new Point(220, 82);
+            lblTrackTimer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTrackTimer.Location = new Point(252, 77);
             lblTrackTimer.Name = "lblTrackTimer";
-            lblTrackTimer.Size = new Size(51, 30);
+            lblTrackTimer.Size = new Size(40, 21);
             lblTrackTimer.TabIndex = 11;
             lblTrackTimer.Text = "0:00";
             // 
             // picBoxSeekBar
             // 
-            picBoxSeekBar.Location = new Point(286, 82);
+            picBoxSeekBar.Location = new Point(298, 70);
             picBoxSeekBar.Name = "picBoxSeekBar";
-            picBoxSeekBar.Size = new Size(344, 33);
+            picBoxSeekBar.Size = new Size(331, 33);
             picBoxSeekBar.TabIndex = 10;
             picBoxSeekBar.TabStop = false;
             picBoxSeekBar.Paint += picBoxSeekBar_Paint;
@@ -232,10 +232,10 @@
             // lblPlayingArtist
             // 
             lblPlayingArtist.AutoSize = true;
-            lblPlayingArtist.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPlayingArtist.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPlayingArtist.Location = new Point(113, 62);
             lblPlayingArtist.Name = "lblPlayingArtist";
-            lblPlayingArtist.Size = new Size(47, 21);
+            lblPlayingArtist.Size = new Size(38, 17);
             lblPlayingArtist.TabIndex = 7;
             lblPlayingArtist.Text = "Artist";
             lblPlayingArtist.MouseLeave += lblPlayingArtist_MouseLeave;
@@ -244,10 +244,10 @@
             // lblPlayingTrackName
             // 
             lblPlayingTrackName.AutoSize = true;
-            lblPlayingTrackName.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPlayingTrackName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPlayingTrackName.Location = new Point(113, 23);
             lblPlayingTrackName.Name = "lblPlayingTrackName";
-            lblPlayingTrackName.Size = new Size(117, 25);
+            lblPlayingTrackName.Size = new Size(100, 21);
             lblPlayingTrackName.TabIndex = 6;
             lblPlayingTrackName.Text = "Track Name";
             lblPlayingTrackName.MouseLeave += lblPlayingTrackName_MouseLeave;
@@ -258,7 +258,7 @@
             picBoxPlayingAlbumPic.Image = Properties.Resources.play_icon;
             picBoxPlayingAlbumPic.Location = new Point(17, 16);
             picBoxPlayingAlbumPic.Name = "picBoxPlayingAlbumPic";
-            picBoxPlayingAlbumPic.Size = new Size(80, 86);
+            picBoxPlayingAlbumPic.Size = new Size(80, 84);
             picBoxPlayingAlbumPic.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPlayingAlbumPic.TabIndex = 5;
             picBoxPlayingAlbumPic.TabStop = false;
@@ -266,9 +266,9 @@
             // picBoxRepeatTrack
             // 
             picBoxRepeatTrack.Image = Properties.Resources.repeat_icon;
-            picBoxRepeatTrack.Location = new Point(556, 28);
+            picBoxRepeatTrack.Location = new Point(551, 23);
             picBoxRepeatTrack.Name = "picBoxRepeatTrack";
-            picBoxRepeatTrack.Size = new Size(38, 38);
+            picBoxRepeatTrack.Size = new Size(30, 30);
             picBoxRepeatTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxRepeatTrack.TabIndex = 3;
             picBoxRepeatTrack.TabStop = false;
@@ -278,9 +278,9 @@
             // picBoxNextTrack
             // 
             picBoxNextTrack.Image = Properties.Resources.next_icon;
-            picBoxNextTrack.Location = new Point(504, 28);
+            picBoxNextTrack.Location = new Point(504, 23);
             picBoxNextTrack.Name = "picBoxNextTrack";
-            picBoxNextTrack.Size = new Size(38, 38);
+            picBoxNextTrack.Size = new Size(30, 30);
             picBoxNextTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxNextTrack.TabIndex = 3;
             picBoxNextTrack.TabStop = false;
@@ -291,9 +291,9 @@
             // picBoxPreviousTrack
             // 
             picBoxPreviousTrack.Image = Properties.Resources.previous_icon;
-            picBoxPreviousTrack.Location = new Point(375, 28);
+            picBoxPreviousTrack.Location = new Point(397, 23);
             picBoxPreviousTrack.Name = "picBoxPreviousTrack";
-            picBoxPreviousTrack.Size = new Size(38, 38);
+            picBoxPreviousTrack.Size = new Size(30, 30);
             picBoxPreviousTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPreviousTrack.TabIndex = 3;
             picBoxPreviousTrack.TabStop = false;
@@ -304,9 +304,9 @@
             // picBoxShuffleTracks
             // 
             picBoxShuffleTracks.Image = Properties.Resources.shuffle_icon;
-            picBoxShuffleTracks.Location = new Point(322, 28);
+            picBoxShuffleTracks.Location = new Point(350, 23);
             picBoxShuffleTracks.Name = "picBoxShuffleTracks";
-            picBoxShuffleTracks.Size = new Size(38, 38);
+            picBoxShuffleTracks.Size = new Size(30, 30);
             picBoxShuffleTracks.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxShuffleTracks.TabIndex = 2;
             picBoxShuffleTracks.TabStop = false;
@@ -316,9 +316,9 @@
             // picBoxVolume
             // 
             picBoxVolume.Image = Properties.Resources.volume_icon;
-            picBoxVolume.Location = new Point(694, 28);
+            picBoxVolume.Location = new Point(711, 23);
             picBoxVolume.Name = "picBoxVolume";
-            picBoxVolume.Size = new Size(38, 38);
+            picBoxVolume.Size = new Size(30, 30);
             picBoxVolume.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxVolume.TabIndex = 8;
             picBoxVolume.TabStop = false;
@@ -328,34 +328,21 @@
             // picBoxNoVolume
             // 
             picBoxNoVolume.Image = Properties.Resources.no_volume_icon;
-            picBoxNoVolume.Location = new Point(694, 28);
+            picBoxNoVolume.Location = new Point(711, 23);
             picBoxNoVolume.Name = "picBoxNoVolume";
-            picBoxNoVolume.Size = new Size(38, 38);
+            picBoxNoVolume.Size = new Size(30, 30);
             picBoxNoVolume.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxNoVolume.TabIndex = 9;
             picBoxNoVolume.TabStop = false;
             picBoxNoVolume.MouseLeave += picBoxNoVolume_MouseLeave;
             picBoxNoVolume.MouseHover += picBoxNoVolume_MouseHover;
             // 
-            // picBoxPauseTrack
-            // 
-            picBoxPauseTrack.Image = Properties.Resources.pause_icon;
-            picBoxPauseTrack.Location = new Point(432, 16);
-            picBoxPauseTrack.Name = "picBoxPauseTrack";
-            picBoxPauseTrack.Size = new Size(56, 60);
-            picBoxPauseTrack.SizeMode = PictureBoxSizeMode.StretchImage;
-            picBoxPauseTrack.TabIndex = 4;
-            picBoxPauseTrack.TabStop = false;
-            picBoxPauseTrack.Click += picBoxPauseTrack_Click;
-            picBoxPauseTrack.MouseLeave += picBoxPauseTrack_MouseLeave;
-            picBoxPauseTrack.MouseHover += picBoxPauseTrack_MouseHover;
-            // 
             // picBoxPlayTrack
             // 
             picBoxPlayTrack.Image = Properties.Resources.play_icon;
-            picBoxPlayTrack.Location = new Point(432, 16);
+            picBoxPlayTrack.Location = new Point(442, 16);
             picBoxPlayTrack.Name = "picBoxPlayTrack";
-            picBoxPlayTrack.Size = new Size(56, 60);
+            picBoxPlayTrack.Size = new Size(46, 48);
             picBoxPlayTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPlayTrack.TabIndex = 3;
             picBoxPlayTrack.TabStop = false;
@@ -363,11 +350,24 @@
             picBoxPlayTrack.MouseLeave += picBoxPlayTrack_MouseLeave;
             picBoxPlayTrack.MouseHover += picBoxPlayTrack_MouseHover;
             // 
+            // picBoxPauseTrack
+            // 
+            picBoxPauseTrack.Image = Properties.Resources.pause_icon;
+            picBoxPauseTrack.Location = new Point(442, 16);
+            picBoxPauseTrack.Name = "picBoxPauseTrack";
+            picBoxPauseTrack.Size = new Size(46, 48);
+            picBoxPauseTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxPauseTrack.TabIndex = 4;
+            picBoxPauseTrack.TabStop = false;
+            picBoxPauseTrack.Click += picBoxPauseTrack_Click;
+            picBoxPauseTrack.MouseLeave += picBoxPauseTrack_MouseLeave;
+            picBoxPauseTrack.MouseHover += picBoxPauseTrack_MouseHover;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 670);
+            ClientSize = new Size(896, 664);
             Controls.Add(panelBody);
             Controls.Add(panelBottomBar);
             Controls.Add(panelTopBar);
@@ -393,8 +393,8 @@
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxVolume).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNoVolume).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).EndInit();
             ResumeLayout(false);
         }
 
