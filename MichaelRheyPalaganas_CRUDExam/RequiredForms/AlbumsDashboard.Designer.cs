@@ -41,28 +41,30 @@
             // picBoxRARight
             // 
             picBoxRARight.Image = Properties.Resources.right_icon;
-            picBoxRARight.Location = new Point(800, 208);
+            picBoxRARight.Location = new Point(753, 199);
             picBoxRARight.Name = "picBoxRARight";
             picBoxRARight.Size = new Size(35, 50);
             picBoxRARight.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxRARight.TabIndex = 22;
             picBoxRARight.TabStop = false;
+            picBoxRARight.Click += picBoxRARight_Click;
             // 
             // picBoxRALeft
             // 
             picBoxRALeft.Image = Properties.Resources.left_icon;
-            picBoxRALeft.Location = new Point(21, 208);
+            picBoxRALeft.Location = new Point(1, 199);
             picBoxRALeft.Name = "picBoxRALeft";
             picBoxRALeft.Size = new Size(35, 50);
             picBoxRALeft.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxRALeft.TabIndex = 21;
             picBoxRALeft.TabStop = false;
+            picBoxRALeft.Click += picBoxRALeft_Click;
             // 
             // lblRecentlyAdded
             // 
             lblRecentlyAdded.AutoSize = true;
             lblRecentlyAdded.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRecentlyAdded.Location = new Point(21, 85);
+            lblRecentlyAdded.Location = new Point(1, 76);
             lblRecentlyAdded.Name = "lblRecentlyAdded";
             lblRecentlyAdded.Size = new Size(151, 25);
             lblRecentlyAdded.TabIndex = 19;
@@ -71,7 +73,7 @@
             // btnShowAllTracks
             // 
             btnShowAllTracks.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnShowAllTracks.Location = new Point(105, 21);
+            btnShowAllTracks.Location = new Point(85, 12);
             btnShowAllTracks.Name = "btnShowAllTracks";
             btnShowAllTracks.Size = new Size(88, 35);
             btnShowAllTracks.TabIndex = 18;
@@ -81,7 +83,7 @@
             // btnShowAllAlbums
             // 
             btnShowAllAlbums.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnShowAllAlbums.Location = new Point(21, 21);
+            btnShowAllAlbums.Location = new Point(1, 12);
             btnShowAllAlbums.Name = "btnShowAllAlbums";
             btnShowAllAlbums.Size = new Size(78, 35);
             btnShowAllAlbums.TabIndex = 17;
@@ -90,9 +92,9 @@
             // 
             // panelRecentlyAdded
             // 
-            panelRecentlyAdded.Location = new Point(62, 125);
+            panelRecentlyAdded.Location = new Point(42, 116);
             panelRecentlyAdded.Name = "panelRecentlyAdded";
-            panelRecentlyAdded.Size = new Size(732, 228);
+            panelRecentlyAdded.Size = new Size(705, 228);
             panelRecentlyAdded.TabIndex = 20;
             // 
             // AlbumsDashboard
@@ -100,7 +102,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(855, 400);
+            ClientSize = new Size(795, 400);
             Controls.Add(picBoxRARight);
             Controls.Add(picBoxRALeft);
             Controls.Add(lblRecentlyAdded);

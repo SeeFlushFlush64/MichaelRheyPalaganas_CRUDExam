@@ -16,6 +16,9 @@
     <Compile Update="SubForms\AddTrack.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SubForms\EditTrack.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SubForms\ShowAlbumTracks.cs">
       <SubType>Form</SubType>
     </Compile>

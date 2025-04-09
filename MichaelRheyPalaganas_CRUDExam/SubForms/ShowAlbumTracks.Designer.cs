@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel2 = new Panel();
             picBoxCurrentAlbumPicture = new PictureBox();
             lblAlbumInformation = new Label();
             lblCurrentAlbumName = new Label();
-            lblNoTracks = new Label();
+            panel2 = new Panel();
             txtBoxSearchTrack = new TextBox();
             pictureBox1 = new PictureBox();
             picBoxAddTrack = new PictureBox();
             picBoxShuffleTracks = new PictureBox();
             dataGridViewTracks = new DataGridView();
             picBoxPlayTracks = new PictureBox();
+            picBoxEditTrack = new PictureBox();
+            picBoxDeleteTrack = new PictureBox();
+            picBoxPlayTrack = new PictureBox();
+            picBoxPauseTrack = new PictureBox();
+            picBoxPauseTracks = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxCurrentAlbumPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -47,6 +51,11 @@
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTracks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayTracks).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxEditTrack).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxDeleteTrack).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTracks).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -60,13 +69,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(802, 188);
             panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.Location = new Point(0, 159);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(802, 411);
-            panel2.TabIndex = 1;
             // 
             // picBoxCurrentAlbumPicture
             // 
@@ -98,17 +100,12 @@
             lblCurrentAlbumName.TabIndex = 3;
             lblCurrentAlbumName.Text = "Album Name";
             // 
-            // lblNoTracks
+            // panel2
             // 
-            lblNoTracks.AutoSize = true;
-            lblNoTracks.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNoTracks.ForeColor = SystemColors.ActiveCaptionText;
-            lblNoTracks.Location = new Point(212, 354);
-            lblNoTracks.Name = "lblNoTracks";
-            lblNoTracks.Size = new Size(350, 60);
-            lblNoTracks.TabIndex = 8;
-            lblNoTracks.Text = "No tracks available for this album.\r\nClick + to start adding tracks.";
-            lblNoTracks.TextAlign = ContentAlignment.MiddleCenter;
+            panel2.Location = new Point(0, 159);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(802, 411);
+            panel2.TabIndex = 1;
             // 
             // txtBoxSearchTrack
             // 
@@ -138,6 +135,9 @@
             picBoxAddTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxAddTrack.TabIndex = 10;
             picBoxAddTrack.TabStop = false;
+            picBoxAddTrack.MouseClick += picBoxAddTrack_MouseClick;
+            picBoxAddTrack.MouseLeave += picBoxAddTrack_MouseLeave;
+            picBoxAddTrack.MouseHover += picBoxAddTrack_MouseHover;
             // 
             // picBoxShuffleTracks
             // 
@@ -148,6 +148,8 @@
             picBoxShuffleTracks.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxShuffleTracks.TabIndex = 9;
             picBoxShuffleTracks.TabStop = false;
+            picBoxShuffleTracks.MouseLeave += picBoxShuffleTracks_MouseLeave;
+            picBoxShuffleTracks.MouseHover += picBoxShuffleTracks_MouseHover;
             // 
             // dataGridViewTracks
             // 
@@ -157,11 +159,12 @@
             dataGridViewTracks.AllowUserToResizeRows = false;
             dataGridViewTracks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewTracks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTracks.Location = new Point(12, 306);
+            dataGridViewTracks.Location = new Point(54, 306);
             dataGridViewTracks.Name = "dataGridViewTracks";
             dataGridViewTracks.ReadOnly = true;
-            dataGridViewTracks.Size = new Size(759, 454);
+            dataGridViewTracks.Size = new Size(614, 454);
             dataGridViewTracks.TabIndex = 13;
+            dataGridViewTracks.CellMouseEnter += dataGridViewTracks_CellMouseEnter;
             // 
             // picBoxPlayTracks
             // 
@@ -172,6 +175,64 @@
             picBoxPlayTracks.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPlayTracks.TabIndex = 14;
             picBoxPlayTracks.TabStop = false;
+            picBoxPlayTracks.MouseLeave += picBoxPlayTracks_MouseLeave;
+            picBoxPlayTracks.MouseHover += picBoxPlayTracks_MouseHover;
+            // 
+            // picBoxEditTrack
+            // 
+            picBoxEditTrack.Image = Properties.Resources.edit_track;
+            picBoxEditTrack.Location = new Point(685, 334);
+            picBoxEditTrack.Name = "picBoxEditTrack";
+            picBoxEditTrack.Size = new Size(25, 25);
+            picBoxEditTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxEditTrack.TabIndex = 15;
+            picBoxEditTrack.TabStop = false;
+            picBoxEditTrack.Click += picBoxEditTrack_Click;
+            picBoxEditTrack.MouseLeave += picBoxEditTrack_MouseLeave;
+            picBoxEditTrack.MouseHover += picBoxEditTrack_MouseHover;
+            // 
+            // picBoxDeleteTrack
+            // 
+            picBoxDeleteTrack.Image = Properties.Resources.delete_track;
+            picBoxDeleteTrack.Location = new Point(733, 334);
+            picBoxDeleteTrack.Name = "picBoxDeleteTrack";
+            picBoxDeleteTrack.Size = new Size(25, 25);
+            picBoxDeleteTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxDeleteTrack.TabIndex = 16;
+            picBoxDeleteTrack.TabStop = false;
+            picBoxDeleteTrack.Click += picBoxDeleteTrack_Click;
+            picBoxDeleteTrack.MouseLeave += picBoxDeleteTrack_MouseLeave;
+            picBoxDeleteTrack.MouseHover += picBoxDeleteTrack_MouseHover;
+            // 
+            // picBoxPlayTrack
+            // 
+            picBoxPlayTrack.Image = Properties.Resources.play_tracks;
+            picBoxPlayTrack.Location = new Point(12, 333);
+            picBoxPlayTrack.Name = "picBoxPlayTrack";
+            picBoxPlayTrack.Size = new Size(26, 26);
+            picBoxPlayTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxPlayTrack.TabIndex = 17;
+            picBoxPlayTrack.TabStop = false;
+            // 
+            // picBoxPauseTrack
+            // 
+            picBoxPauseTrack.Image = Properties.Resources.pause_track;
+            picBoxPauseTrack.Location = new Point(12, 333);
+            picBoxPauseTrack.Name = "picBoxPauseTrack";
+            picBoxPauseTrack.Size = new Size(26, 26);
+            picBoxPauseTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxPauseTrack.TabIndex = 18;
+            picBoxPauseTrack.TabStop = false;
+            // 
+            // picBoxPauseTracks
+            // 
+            picBoxPauseTracks.Image = Properties.Resources.pause_tracks;
+            picBoxPauseTracks.Location = new Point(29, 205);
+            picBoxPauseTracks.Name = "picBoxPauseTracks";
+            picBoxPauseTracks.Size = new Size(71, 74);
+            picBoxPauseTracks.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxPauseTracks.TabIndex = 19;
+            picBoxPauseTracks.TabStop = false;
             // 
             // ShowAlbumTracks
             // 
@@ -179,14 +240,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(800, 450);
+            Controls.Add(picBoxDeleteTrack);
+            Controls.Add(picBoxEditTrack);
             Controls.Add(picBoxPlayTracks);
             Controls.Add(txtBoxSearchTrack);
             Controls.Add(pictureBox1);
             Controls.Add(picBoxAddTrack);
             Controls.Add(picBoxShuffleTracks);
-            Controls.Add(lblNoTracks);
             Controls.Add(panel1);
             Controls.Add(dataGridViewTracks);
+            Controls.Add(picBoxPauseTracks);
+            Controls.Add(picBoxPlayTrack);
+            Controls.Add(picBoxPauseTrack);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ShowAlbumTracks";
             Text = "ShowAlbumTracks";
@@ -198,6 +263,11 @@
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTracks).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayTracks).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxEditTrack).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxDeleteTrack).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTracks).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,12 +279,16 @@
         private PictureBox picBoxCurrentAlbumPicture;
         private Label lblAlbumInformation;
         private Label lblCurrentAlbumName;
-        private Label lblNoTracks;
         private TextBox txtBoxSearchTrack;
         private PictureBox pictureBox1;
         private PictureBox picBoxAddTrack;
         private PictureBox picBoxShuffleTracks;
         private DataGridView dataGridViewTracks;
         private PictureBox picBoxPlayTracks;
+        private PictureBox picBoxEditTrack;
+        private PictureBox picBoxDeleteTrack;
+        private PictureBox picBoxPlayTrack;
+        private PictureBox picBoxPauseTrack;
+        private PictureBox picBoxPauseTracks;
     }
 }

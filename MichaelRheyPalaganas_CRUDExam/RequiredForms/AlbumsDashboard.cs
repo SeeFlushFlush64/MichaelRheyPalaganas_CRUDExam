@@ -1,15 +1,6 @@
 ﻿using MichaelRheyPalaganas_CRUDExam.Data;
 using MichaelRheyPalaganas_CRUDExam.Models.Entities;
 using MichaelRheyPalaganas_CRUDExam.SubForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MichaelRheyPalaganas_CRUDExam.RequiredForms
 {
@@ -128,6 +119,27 @@ namespace MichaelRheyPalaganas_CRUDExam.RequiredForms
             picBoxRARight.Visible = (_currentIndex + _visibleAlbums < _albumPanels.Count);
         }
 
+     
+
+        private void UpdateAlbumVisibility()
+        {
+            for (int i = 0; i < _albumPanels.Count; i++)
+            {
+                _albumPanels[i].Visible = (i >= _currentIndex && i < _currentIndex + _visibleAlbums);
+            }
+
+            // Adjust Left positions correctly to maintain order
+            for (int i = 0; i < _visibleAlbums; i++)
+            {
+                if (_currentIndex + i < _albumPanels.Count)
+                {
+                    _albumPanels[_currentIndex + i].Left = i * _albumWidth;
+                }
+            }
+
+            UpdateButtons();
+        }
+
         private void Album_MouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
@@ -147,7 +159,26 @@ namespace MichaelRheyPalaganas_CRUDExam.RequiredForms
             // Retrieve the Album object from the Tag property
             if (clickedControl.Tag is Album selectedAlbum)
             {
-                _parentForm.ShowAddAlbums(new ShowAlbumTracks(_context, selectedAlbum, _parentForm));
+                _parentForm.NavigateToForm(new ShowAlbumTracks(_context, selectedAlbum, _parentForm));
+            }
+        }
+
+        private void picBoxRALeft_Click(object sender, EventArgs e)
+        {
+            if (_currentIndex > 0)
+            {
+                _currentIndex--;
+                UpdateAlbumVisibility();
+            }
+        }
+
+        private void picBoxRARight_Click(object sender, EventArgs e)
+        {
+            int totalAlbums = _albumPanels.Count;
+            if (_currentIndex + _visibleAlbums < totalAlbums)
+            {
+                _currentIndex++;
+                UpdateAlbumVisibility();
             }
         }
     }

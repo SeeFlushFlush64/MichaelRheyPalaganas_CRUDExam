@@ -41,7 +41,7 @@ namespace MichaelRheyPalaganas_CRUDExam
             // Update navigation buttons
             UpdateNavigationButtons();
         }
-        private void LoadAlbumsDashboard()
+        public void LoadAlbumsDashboard()
         {
             LoadForms(new AlbumsDashboard(this, _context)); // Pass 'this' (MainForm) as reference to Form1
         }
@@ -60,15 +60,7 @@ namespace MichaelRheyPalaganas_CRUDExam
 
         public void ShowAddAlbums(Form form)
         {
-            if (panelBody.Controls.Count > 0)
-            {
-                panelBody.Controls.RemoveAt(0);
-            }
-            form.TopLevel = false;
-            form.Dock = DockStyle.Fill;
-            panelBody.Controls.Add(form);
-            panelBody.Tag = form;
-            form.Show();
+
         }
 
 
@@ -143,6 +135,106 @@ namespace MichaelRheyPalaganas_CRUDExam
                 // Update navigation buttons
                 UpdateNavigationButtons();
             }
+        }
+
+        private void lblPlayingTrackName_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void lblPlayingTrackName_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void lblPlayingArtist_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void lblPlayingArtist_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxShuffleTracks_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxShuffleTracks_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxPreviousTrack_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxPreviousTrack_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxPlayTrack_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxPlayTrack_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxPauseTrack_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxPauseTrack_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxNextTrack_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxNextTrack_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxRepeatTrack_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxRepeatTrack_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxVolume_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxVolume_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void picBoxNoVolume_MouseHover(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void picBoxNoVolume_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
         }
     }
 }

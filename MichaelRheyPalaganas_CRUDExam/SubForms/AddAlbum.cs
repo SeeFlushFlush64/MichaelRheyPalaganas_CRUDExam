@@ -44,12 +44,9 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             _context.SaveChanges();
 
             ClearAlbumFields();
-            ShowAddAlbumMessage();
+            // Navigate back to AlbumsDashboard after adding the album
+            _parentForm.LoadAlbumsDashboard();
         }
 
-        private void ShowAddAlbumMessage()
-        {
-            MessageBox.Show("Album Added Successfully", "Add Album", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
     }
 }
