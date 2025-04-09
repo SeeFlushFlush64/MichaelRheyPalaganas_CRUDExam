@@ -175,6 +175,7 @@
             picBoxPlayTracks.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPlayTracks.TabIndex = 14;
             picBoxPlayTracks.TabStop = false;
+            picBoxPlayTracks.Click += picBoxPlayTracks_Click;
             picBoxPlayTracks.MouseLeave += picBoxPlayTracks_MouseLeave;
             picBoxPlayTracks.MouseHover += picBoxPlayTracks_MouseHover;
             // 
@@ -233,6 +234,7 @@
             picBoxPauseTracks.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPauseTracks.TabIndex = 19;
             picBoxPauseTracks.TabStop = false;
+            picBoxPauseTracks.Click += picBoxPauseTracks_Click;
             // 
             // ShowAlbumTracks
             // 
@@ -242,16 +244,16 @@
             ClientSize = new Size(800, 450);
             Controls.Add(picBoxDeleteTrack);
             Controls.Add(picBoxEditTrack);
-            Controls.Add(picBoxPlayTracks);
             Controls.Add(txtBoxSearchTrack);
             Controls.Add(pictureBox1);
             Controls.Add(picBoxAddTrack);
             Controls.Add(picBoxShuffleTracks);
             Controls.Add(panel1);
             Controls.Add(dataGridViewTracks);
-            Controls.Add(picBoxPauseTracks);
             Controls.Add(picBoxPlayTrack);
             Controls.Add(picBoxPauseTrack);
+            Controls.Add(picBoxPlayTracks);
+            Controls.Add(picBoxPauseTracks);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ShowAlbumTracks";
             Text = "ShowAlbumTracks";

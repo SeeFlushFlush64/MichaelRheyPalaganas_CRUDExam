@@ -1,4 +1,5 @@
 using MichaelRheyPalaganas_CRUDExam.Data;
+using MichaelRheyPalaganas_CRUDExam.Models.Entities;
 using MichaelRheyPalaganas_CRUDExam.RequiredForms;
 using MichaelRheyPalaganas_CRUDExam.SubForms;
 
@@ -9,12 +10,15 @@ namespace MichaelRheyPalaganas_CRUDExam
         private readonly AppDbContext _context;
         private Stack<Form> _backStack = new Stack<Form>();
         private Stack<Form> _forwardStack = new Stack<Form>();
+        public Album album;
+        public int? currentPlayingTrackId;
+        private ShowAlbumTracks _showAlbumTracks;
         public MainForm(AppDbContext context)
         {
-
+            
             InitializeComponent();
             _context = context;
-            LoadAlbumsDashboard(); // Load the initial form
+            LoadAlbumsDashboard();
         }
         private void LoadForms(Form newForm)
         {
@@ -235,6 +239,42 @@ namespace MichaelRheyPalaganas_CRUDExam
         private void picBoxNoVolume_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
+        }
+
+        private void picBoxPreviousTrack_Click(object sender, EventArgs e)
+        {
+            album = AudioManager.album;
+            var nextTrack = album.Tracks
+                          .Where(t => t.TrackId < AudioManager.currentlyPlayingTrackId)
+                          .OrderByDescending(t => t.TrackId) 
+                          .FirstOrDefault();
+         
+
+            if (nextTrack != null)
+            {
+ 
+                AudioManager.Next(nextTrack.FilePath);
+                AudioManager.DisplayCurrentPlayingTrackDetails(nextTrack);
+              
+                currentPlayingTrackId = nextTrack.TrackId;
+            }
+        }
+
+        private void picBoxNextTrack_Click(object sender, EventArgs e)
+        {
+            album = AudioManager.album;
+            var nextTrack = album.Tracks.FirstOrDefault(t => t.TrackId > AudioManager.currentlyPlayingTrackId);
+
+
+            if (nextTrack != null)
+            {
+  k
+                AudioManager.Next(nextTrack.FilePath);
+                AudioManager.DisplayCurrentPlayingTrackDetails(nextTrack);
+           
+                currentPlayingTrackId = nextTrack.TrackId;
+            }
+
         }
     }
 }

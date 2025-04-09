@@ -45,10 +45,10 @@
             picBoxNextTrack = new PictureBox();
             picBoxPreviousTrack = new PictureBox();
             picBoxShuffleTracks = new PictureBox();
-            picBoxPauseTrack = new PictureBox();
             picBoxPlayTrack = new PictureBox();
             picBoxVolume = new PictureBox();
             picBoxNoVolume = new PictureBox();
+            picBoxPauseTrack = new PictureBox();
             panelTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxHome).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxForwardButton).BeginInit();
@@ -62,10 +62,10 @@
             ((System.ComponentModel.ISupportInitialize)picBoxNextTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPreviousTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxVolume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNoVolume).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).BeginInit();
             SuspendLayout();
             // 
             // panelTopBar
@@ -237,6 +237,7 @@
             picBoxNextTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxNextTrack.TabIndex = 3;
             picBoxNextTrack.TabStop = false;
+            picBoxNextTrack.Click += picBoxNextTrack_Click;
             picBoxNextTrack.MouseLeave += picBoxNextTrack_MouseLeave;
             picBoxNextTrack.MouseHover += picBoxNextTrack_MouseHover;
             // 
@@ -249,6 +250,7 @@
             picBoxPreviousTrack.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxPreviousTrack.TabIndex = 3;
             picBoxPreviousTrack.TabStop = false;
+            picBoxPreviousTrack.Click += picBoxPreviousTrack_Click;
             picBoxPreviousTrack.MouseLeave += picBoxPreviousTrack_MouseLeave;
             picBoxPreviousTrack.MouseHover += picBoxPreviousTrack_MouseHover;
             // 
@@ -263,18 +265,6 @@
             picBoxShuffleTracks.TabStop = false;
             picBoxShuffleTracks.MouseLeave += picBoxShuffleTracks_MouseLeave;
             picBoxShuffleTracks.MouseHover += picBoxShuffleTracks_MouseHover;
-            // 
-            // picBoxPauseTrack
-            // 
-            picBoxPauseTrack.Image = Properties.Resources.pause_icon;
-            picBoxPauseTrack.Location = new Point(432, 16);
-            picBoxPauseTrack.Name = "picBoxPauseTrack";
-            picBoxPauseTrack.Size = new Size(56, 60);
-            picBoxPauseTrack.SizeMode = PictureBoxSizeMode.StretchImage;
-            picBoxPauseTrack.TabIndex = 4;
-            picBoxPauseTrack.TabStop = false;
-            picBoxPauseTrack.MouseLeave += picBoxPauseTrack_MouseLeave;
-            picBoxPauseTrack.MouseHover += picBoxPauseTrack_MouseHover;
             // 
             // picBoxPlayTrack
             // 
@@ -312,6 +302,18 @@
             picBoxNoVolume.MouseLeave += picBoxNoVolume_MouseLeave;
             picBoxNoVolume.MouseHover += picBoxNoVolume_MouseHover;
             // 
+            // picBoxPauseTrack
+            // 
+            picBoxPauseTrack.Image = Properties.Resources.pause_icon;
+            picBoxPauseTrack.Location = new Point(432, 16);
+            picBoxPauseTrack.Name = "picBoxPauseTrack";
+            picBoxPauseTrack.Size = new Size(56, 60);
+            picBoxPauseTrack.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBoxPauseTrack.TabIndex = 4;
+            picBoxPauseTrack.TabStop = false;
+            picBoxPauseTrack.MouseLeave += picBoxPauseTrack_MouseLeave;
+            picBoxPauseTrack.MouseHover += picBoxPauseTrack_MouseHover;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -339,10 +341,10 @@
             ((System.ComponentModel.ISupportInitialize)picBoxNextTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPreviousTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxShuffleTracks).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxPlayTrack).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxVolume).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxNoVolume).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxPauseTrack).EndInit();
             ResumeLayout(false);
         }
 

@@ -21,6 +21,7 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
         private PictureBox _currentPicPauseTrack;
         private int _currentTrackId = -1;
         private int? _currentlyPlayingTrackId = null;
+        
 
 
         public ShowAlbumTracks(AppDbContext context, Album album, MainForm parentForm)
@@ -28,6 +29,8 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             _context = context;
             _album = _context.Albums.Include(a => a.Tracks).FirstOrDefault(a => a.AlbumId == album.AlbumId);
             _parentForm = parentForm;
+            
+            
             InitializeComponent();
             LoadAlbumTracks();
         }
@@ -217,7 +220,11 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
 
                 // Skip if it's the same track we're already showing
                 if (trackId == _currentTrackId)
+                {
+
                     return;
+                }
+
 
                 // Hide/remove the previous picPlayTrack if it exists
                 if (_currentPicPlayTrack != null)
@@ -228,7 +235,7 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
                     _currentTrackId = -1;
                 }
 
-                // Hide/remove the previous picPlayTrack if it exists
+                // Hide/remove the previous picPauseTrack if it exists
                 if (_currentPicPauseTrack != null)
                 {
                     this.Controls.Remove(_currentPicPlayTrack);
@@ -276,68 +283,45 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             }
         }
 
-        //private void PicPlay_MouseHover(object sender, EventArgs e)
-        //{
-        //    Cursor = Cursors.Hand;
-        //}
-
-        //private void PicPlay_MouseLeave(object sender, EventArgs e)
-        //{
-        //    Cursor = Cursors.Arrow;
-        //}
-
-        //private void PicPauseTrack_MouseHover(object sender, EventArgs e)
-        //{
-        //    Cursor = Cursors.Hand;
-        //}
-
-        //private void PicPauseTrack_MouseLeave(object sender, EventArgs e)
-        //{
-        //    Cursor = Cursors.Arrow;
-        //}
         private void PicPlay_Click(object sender, EventArgs e)
         {
             PictureBox clickedPic = sender as PictureBox;
             int trackId = (int)clickedPic.Tag;
             var track = _album.Tracks.FirstOrDefault(t => t.TrackId == trackId);
             clickedPic.SendToBack();
-            
+
             // Same track & it's paused -> just resume
-            if (_outputDevice != null &&
-                _outputDevice.PlaybackState == PlaybackState.Paused &&
-                _currentlyPlayingTrackId == trackId)
+            if (AudioManager.IsPlaying && AudioManager.currentlyPlayingTrackId == trackId)
             {
-                picBoxPlayTracks.SendToBack();
-                _parentForm.picBoxPlayTrack.SendToBack();
-                _outputDevice.Play();
+                AudioManager.Resume();  // Just resume
                 return;
             }
 
-            // Different track or no track playing
-            if (_outputDevice != null)
-            {
-                _outputDevice.Stop();
-                _outputDevice.Dispose();
-                _outputDevice = null;
-                _audioFile?.Dispose();
-                _audioFile = null;
-            }
+            // Stop the current track (if any)
+            AudioManager.Stop();
 
+            // Play the new track
             if (track != null)
             {
                 picBoxPlayTracks.SendToBack();
                 _parentForm.picBoxPlayTrack.SendToBack();
-                _currentlyPlayingTrackId = trackId; // update current track ID
-                _parentForm.lblPlayingTrackName.Text = track.TrackName;
-                _parentForm.lblPlayingArtist.Text = _album.Artist;
-                _parentForm.picBoxPlayingAlbumPic.ImageLocation = _album.AlbumPicture;
-                _parentForm.picBoxPlayTrack.SendToBack();
-
-                PlayMp3(track.FilePath); // Play the new track
+                DisplayCurrentPlayingTrackDetails(track);
+                AudioManager.PlayMp3(track.FilePath);
             }
-            
         }
 
+
+        public void DisplayCurrentPlayingTrackDetails(Track track)
+        {
+            AudioManager.parentForm = _parentForm;
+            AudioManager.album = _album; 
+       
+            AudioManager.currentlyPlayingTrackId = track.TrackId;
+            AudioManager.DisplayCurrentPlayingTrackDetails(track);
+            _currentlyPlayingTrackId = track.TrackId;
+            
+            _parentForm.picBoxPlayTrack.SendToBack();
+        }
 
         private void PicPauseTrack_Click(object sender, EventArgs e)
         {
@@ -346,11 +330,13 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             clickedPic.SendToBack();
             picBoxPauseTracks.SendToBack();
             _parentForm.picBoxPauseTrack.SendToBack();
-            _outputDevice.Pause();
+            AudioManager.Pause();  // Use AudioManager to pause the track
         }
 
-        private void PlayMp3(string filePath)
+
+        public void PlayMp3(string filePath)
         {
+            // Dispose the previous output device and audio file if any
             if (_outputDevice != null)
             {
                 _outputDevice.Stop();
@@ -364,11 +350,15 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
                 _audioFile = null;
             }
 
+            // Set up and play the new track
+            //_parentForm.currentPlayingTrackId = _currentlyPlayingTrackId;
+            _parentForm.album = _album;
             _outputDevice = new WaveOutEvent();
             _audioFile = new AudioFileReader(filePath);
             _outputDevice.Init(_audioFile);
             _outputDevice.Play();
         }
+
 
         private void PicEdit_Click(object sender, EventArgs e)
         {
@@ -398,6 +388,20 @@ namespace MichaelRheyPalaganas_CRUDExam.SubForms
             }
         }
 
-     
+        private void picBoxPlayTracks_Click(object sender, EventArgs e)
+        {
+            picBoxPlayTracks.SendToBack();
+            var firstTrack = _album.Tracks.OrderBy(t => t.TrackId).FirstOrDefault();
+
+            DisplayCurrentPlayingTrackDetails(firstTrack);
+            AudioManager.PlayMp3(firstTrack.FilePath); // Play the first track
+        }
+
+        private void picBoxPauseTracks_Click(object sender, EventArgs e)
+        {
+            picBoxPauseTracks.SendToBack();
+            _parentForm.picBoxPauseTrack.SendToBack();
+            AudioManager.Pause();
+        }
     }
 }
