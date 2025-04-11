@@ -40,6 +40,9 @@
             txtBoxAlbumPicture = new TextBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            lblAlbumNameError = new Label();
+            lblGenreError = new Label();
+            lblArtistError = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -59,7 +62,7 @@
             // 
             lblArtist.AutoSize = true;
             lblArtist.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblArtist.Location = new Point(56, 150);
+            lblArtist.Location = new Point(56, 180);
             lblArtist.Name = "lblArtist";
             lblArtist.Size = new Size(51, 21);
             lblArtist.TabIndex = 19;
@@ -69,7 +72,7 @@
             // 
             lblGenre.AutoSize = true;
             lblGenre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGenre.Location = new Point(55, 230);
+            lblGenre.Location = new Point(56, 289);
             lblGenre.Name = "lblGenre";
             lblGenre.Size = new Size(55, 21);
             lblGenre.TabIndex = 18;
@@ -88,7 +91,7 @@
             // txtBoxArtist
             // 
             txtBoxArtist.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxArtist.Location = new Point(55, 174);
+            txtBoxArtist.Location = new Point(55, 204);
             txtBoxArtist.Name = "txtBoxArtist";
             txtBoxArtist.Size = new Size(242, 29);
             txtBoxArtist.TabIndex = 16;
@@ -96,7 +99,7 @@
             // txtBoxGenre
             // 
             txtBoxGenre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxGenre.Location = new Point(55, 254);
+            txtBoxGenre.Location = new Point(56, 313);
             txtBoxGenre.Name = "txtBoxGenre";
             txtBoxGenre.Size = new Size(242, 29);
             txtBoxGenre.TabIndex = 15;
@@ -123,7 +126,7 @@
             // 
             lblAlbumPicture.AutoSize = true;
             lblAlbumPicture.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAlbumPicture.Location = new Point(55, 315);
+            lblAlbumPicture.Location = new Point(431, 71);
             lblAlbumPicture.Name = "lblAlbumPicture";
             lblAlbumPicture.Size = new Size(200, 21);
             lblAlbumPicture.TabIndex = 23;
@@ -132,14 +135,14 @@
             // txtBoxAlbumPicture
             // 
             txtBoxAlbumPicture.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxAlbumPicture.Location = new Point(55, 339);
+            txtBoxAlbumPicture.Location = new Point(431, 95);
             txtBoxAlbumPicture.Name = "txtBoxAlbumPicture";
             txtBoxAlbumPicture.Size = new Size(242, 29);
             txtBoxAlbumPicture.TabIndex = 22;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(109, 329);
+            pictureBox1.Location = new Point(485, 85);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(0, 0);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -149,18 +152,54 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.album_icon;
-            pictureBox2.Location = new Point(370, 47);
+            pictureBox2.Location = new Point(523, 188);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(390, 350);
+            pictureBox2.Size = new Size(237, 209);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 24;
             pictureBox2.TabStop = false;
+            // 
+            // lblAlbumNameError
+            // 
+            lblAlbumNameError.AutoSize = true;
+            lblAlbumNameError.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblAlbumNameError.ForeColor = Color.Red;
+            lblAlbumNameError.Location = new Point(56, 129);
+            lblAlbumNameError.Name = "lblAlbumNameError";
+            lblAlbumNameError.Size = new Size(157, 17);
+            lblAlbumNameError.TabIndex = 25;
+            lblAlbumNameError.Text = "Album Name is required!";
+            // 
+            // lblGenreError
+            // 
+            lblGenreError.AutoSize = true;
+            lblGenreError.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblGenreError.ForeColor = Color.Red;
+            lblGenreError.Location = new Point(56, 345);
+            lblGenreError.Name = "lblGenreError";
+            lblGenreError.Size = new Size(115, 17);
+            lblGenreError.TabIndex = 26;
+            lblGenreError.Text = "Genre is required!";
+            // 
+            // lblArtistError
+            // 
+            lblArtistError.AutoSize = true;
+            lblArtistError.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblArtistError.ForeColor = Color.Red;
+            lblArtistError.Location = new Point(56, 236);
+            lblArtistError.Name = "lblArtistError";
+            lblArtistError.Size = new Size(112, 17);
+            lblArtistError.TabIndex = 27;
+            lblArtistError.Text = "Artist is required!";
             // 
             // AddAlbum
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblArtistError);
+            Controls.Add(lblGenreError);
+            Controls.Add(lblAlbumNameError);
             Controls.Add(pictureBox2);
             Controls.Add(lblAlbumPicture);
             Controls.Add(txtBoxAlbumPicture);
@@ -196,5 +235,8 @@
         private TextBox txtBoxAlbumPicture;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Label lblAlbumNameError;
+        private Label lblGenreError;
+        private Label lblArtistError;
     }
 }

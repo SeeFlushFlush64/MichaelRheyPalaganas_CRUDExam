@@ -40,6 +40,7 @@
             txtBoxGenre = new TextBox();
             txtBoxTrackName = new TextBox();
             lblAddAlbum = new Label();
+            lblTrackNameError = new Label();
             ((System.ComponentModel.ISupportInitialize)picBoxBrowseTrack).BeginInit();
             SuspendLayout();
             // 
@@ -99,7 +100,7 @@
             // 
             lblArtist.AutoSize = true;
             lblArtist.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblArtist.Location = new Point(56, 171);
+            lblArtist.Location = new Point(56, 178);
             lblArtist.Name = "lblArtist";
             lblArtist.Size = new Size(51, 21);
             lblArtist.TabIndex = 31;
@@ -129,7 +130,7 @@
             // 
             txtBoxArtist.Enabled = false;
             txtBoxArtist.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxArtist.Location = new Point(55, 195);
+            txtBoxArtist.Location = new Point(55, 202);
             txtBoxArtist.Name = "txtBoxArtist";
             txtBoxArtist.ReadOnly = true;
             txtBoxArtist.Size = new Size(242, 29);
@@ -164,11 +165,23 @@
             lblAddAlbum.Size = new Size(0, 32);
             lblAddAlbum.TabIndex = 25;
             // 
+            // lblTrackNameError
+            // 
+            lblTrackNameError.AutoSize = true;
+            lblTrackNameError.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTrackNameError.ForeColor = Color.Red;
+            lblTrackNameError.Location = new Point(56, 130);
+            lblTrackNameError.Name = "lblTrackNameError";
+            lblTrackNameError.Size = new Size(150, 17);
+            lblTrackNameError.TabIndex = 37;
+            lblTrackNameError.Text = "Track Name is required!";
+            // 
             // AddTrack
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblTrackNameError);
             Controls.Add(picBoxBrowseTrack);
             Controls.Add(lblImportTrack);
             Controls.Add(txtBoxTrackFilePath);
@@ -204,5 +217,6 @@
         private TextBox txtBoxGenre;
         private TextBox txtBoxTrackName;
         private Label lblAddAlbum;
+        private Label lblTrackNameError;
     }
 }
